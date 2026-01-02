@@ -1,3 +1,4 @@
+package cipher;
 import java.util.HashMap;
 import java.util.Scanner;
 import java.util.Map;
@@ -27,10 +28,13 @@ public class cipher{
            if(ans[i]>26){
             ans[i]=ans[i]-26;
            }
+           else{
+            ans[i]=map.get(plainText.charAt(i))+key;
+           }
         }
         System.out.println("cipher text is");
         for (int i = 0; i < ans.length; i++) {
-            System.out.print(ans[i]+" ");
+            System.out.println("Cipher Text is "+ans[i]+" ");
         }
 
 
@@ -38,12 +42,11 @@ public class cipher{
         String decryptedCode="";
         for(int i=0;i<ans.length;i++){
                 int temp=ans[i]-3;
-                System.out.println(temp);
                 
             for (Map.Entry<Character, Integer> entry : map.entrySet()) {
             if (entry.getValue().equals(temp)) {
                char foundKey = entry.getKey();
-               System.out.println(foundKey);
+            //    System.out.println(foundKey);
                decryptedCode+=foundKey;
                 break; // Found the key, no need to continue
             }

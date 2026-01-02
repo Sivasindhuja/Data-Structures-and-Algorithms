@@ -1,3 +1,4 @@
+package BitWiseOperation;
 import java.util.*;
 public class bitwiseOperators{
     public static void main(String[] args) {

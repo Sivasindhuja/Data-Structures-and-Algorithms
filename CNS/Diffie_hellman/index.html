@@ -6,9 +6,16 @@
     <title>Diffie-Hellman-Simulator</title>
 </head>
 <body>
-    <input type="number" id="p">
-    <input type="number" id="Generator">
+    <h2>Diffie-Hellman key Exchange</h2>
+    <input type="number" id="p" placeholder="Enter any prime number(p)">
+    <input type="number" id="g" placeholder="Enter a primitive root(g) (Generator)">
+     
+     <input type="number" id="a" placeholder="Alice's private key (a)">
+    <input type="number" id="b" placeholder="Bob's private key (b)">
 
+      <button onclick="exchange()">Generate Shared Key</button>
+        <p id="result"></p>
+        <script src="./index.js"></script>
 </body>
 
 </html>

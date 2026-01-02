@@ -1,0 +1,33 @@
+algorithm steps
+step-1:select two large numbers p,q
+step-2:calculate n=p*q
+step-3:calculate phi(n)=(p-1)(q-1)
+step-4:select an integer e such that 1<e<phi(n) and e,phi(n) are coprimes
+step-5:select an integer d such that (d*e) mod(phi(n))=1
+step-6:(e,n) is the public key and (d,n) is the private key
+encryption process:sender converts the message M into numbers and finds the cipher text
+using the formula==C=M^{e}(mod n)
+decryption process:using formula==M=C^{d}(mod n)
+
+
+mistakes I made:
+1.You changed integers to double to be able to use Math.pow.but RSA should not use
+double.
+2.double oriMessage=Math.pow(cipherText,doubleE) %n;error in the formula-it is d not ecryption
+3.findD--running infinite loop upto Integer.MAX_VALUE(inefficient)
+4.findE--finding smallest coprime 
+5.hardcoded hashMap--more scope for NullPointerException
+6.String answer="";
+        System.out.println("cipher text is");
+        for (int i = 0; i < ans.length; i++) {
+            answer+=ans[i];
+        }
+        int finalAns=Integer.parseInt(answer);
+
+in this part of the code,you are concatinating all numbers to a string.
+which means your intension was to have 12,13 but the number is 1213-->this may exceed 
+integer limit
+7.donot use int for p,q,n because they are really big integers.int can exceed that limit
+
+
+

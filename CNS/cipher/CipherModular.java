@@ -1,3 +1,4 @@
+package cipher;
 import java.util.*;
 public class CipherModular {
     public static int encryption(int key,String plainText){
@@ -17,16 +18,7 @@ public class CipherModular {
             ans[i]=ans[i]-26;
            }
         }
-        String answer="";
-        System.out.println("cipher text is");
-        for (int i = 0; i < ans.length; i++) {
-            answer+=ans[i];
-        }
-        int finalAns=Integer.parseInt(answer);
-
-        return finalAns;
-
-
+        return 1;
     }
     public static void main(String args[]){
         Scanner sc=new Scanner(System.in);
@@ -35,6 +27,7 @@ public class CipherModular {
         int key=3;
 
         int  ans=encryption(key, plainText);
+        System.out.println(plainText);
 
 
     }
