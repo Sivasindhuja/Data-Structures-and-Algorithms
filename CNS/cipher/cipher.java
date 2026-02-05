@@ -46,7 +46,7 @@ public class cipher{
             for (Map.Entry<Character, Integer> entry : map.entrySet()) {
             if (entry.getValue().equals(temp)) {
                char foundKey = entry.getKey();
-            //    System.out.println(foundKey);
+            // System.out.println(foundKey);
                decryptedCode+=foundKey;
                 break; // Found the key, no need to continue
             }
@@ -55,8 +55,5 @@ public class cipher{
             }
             System.out.println("decrypted code is "+decryptedCode);
              
-        }
-
-      
-       
+        }     
     }

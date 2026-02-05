@@ -31,9 +31,7 @@ public class SearchInaMatrix{
         int target=sc.nextInt();
 
        int[] index=searchMatrix(mat, target);
-        System.out.println(index[0]+" "+index[1]);
-
-        
+        System.out.println(index[0]+" "+index[1]);   
     }
 }
 
