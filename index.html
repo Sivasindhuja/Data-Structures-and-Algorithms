@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Complete Python Master Study Guide</title>
+    <style>
+        :root {
+            --primary-blue: #306998;
+            --secondary-yellow: #FFE873;
+            --bg-color: #f4f7f6;
+            --text-color: #333;
+            --code-bg: #282c34;
+            --code-text: #abb2bf;
+            --sidebar-width: 260px;
+        }
+
+        * { box-sizing: border-box; }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--bg-color);
+            margin: 0;
+            display: flex;
+        }
+
+        /* Sidebar Navigation */
+        nav {
+            width: var(--sidebar-width);
+            background: var(--primary-blue);
+            height: 100vh;
+            position: fixed;
+            color: white;
+            padding: 20px;
+            overflow-y: auto;
+            border-right: 4px solid var(--secondary-yellow);
+        }
+
+        nav h2 { font-size: 1.2rem; margin-bottom: 20px; text-align: center; }
+        nav ul { list-style: none; padding: 0; }
+        nav ul li { margin: 10px 0; border-bottom: 1px solid rgba(255,255,255,0.1); }
+        nav ul li a { 
+            color: white; 
+            text-decoration: none; 
+            font-size: 0.85rem; 
+            display: block; 
+            padding: 8px 5px;
+            transition: 0.2s; 
+        }
+        nav ul li a:hover { color: var(--secondary-yellow); padding-left: 10px; }
+
+        /* Main Content */
+        main {
+            margin-left: var(--sidebar-width);
+            padding: 40px;
+            width: calc(100% - var(--sidebar-width));
+            background: white;
+            min-height: 100vh;
+        }
+
+        section { margin-bottom: 60px; scroll-margin-top: 20px; }
+        
+        h1 { color: var(--primary-blue); font-size: 2.5rem; border-bottom: 4px solid var(--secondary-yellow); padding-bottom: 10px; }
+        h2 { color: #2c3e50; border-left: 6px solid var(--primary-blue); padding-left: 15px; background: #f8f9fa; padding-top: 10px; padding-bottom: 10px; }
+        h3 { color: #e67e22; margin-top: 30px; border-bottom: 1px dashed #ddd; }
+
+        pre {
+            background: var(--code-bg);
+            color: var(--code-text);
+            padding: 18px;
+            border-radius: 8px;
+            overflow-x: auto;
+            font-size: 0.95rem;
+            box-shadow: inset 0 2px 10px rgba(0,0,0,0.3);
+        }
+
+        code { font-family: 'Fira Code', 'Courier New', monospace; }
+
+        .note-box {
+            background: #fff3cd;
+            border-left: 5px solid #ffc107;
+            padding: 15px;
+            margin: 20px 0;
+            font-style: italic;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            font-size: 0.9rem;
+        }
+
+        table, th, td { border: 1px solid #dee2e6; }
+        th, td { padding: 12px; text-align: left; }
+        th { background-color: var(--primary-blue); color: white; }
+        tr:nth-child(even) { background-color: #f2f2f2; }
+
+        .method-table td:first-child { font-weight: bold; color: #d35400; font-family: monospace; }
+
+        hr { border: 0; height: 2px; background: #eee; margin: 50px 0; }
+    </style>
+</head>
+<body>
+
+<nav>
+    <h2>Python Roadmap</h2>
+    <ul>
+        <li><a href="#intro">1. Getting Started</a></li>
+        <li><a href="#syntax">2. Syntax & Identifiers</a></li>
+        <li><a href="#variables">3. Variables & Scope</a></li>
+        <li><a href="#datatypes">4. Data Types & Casting</a></li>
+        <li><a href="#operators">5. Operators & Precedence</a></li>
+        <li><a href="#input-output">6. Input & Basic Math</a></li>
+        <li><a href="#strings">7. Strings & Slicing</a></li>
+        <li><a href="#lists">8. Lists (Mutable)</a></li>
+        <li><a href="#tuples">9. Tuples (Immutable)</a></li>
+        <li><a href="#sets">10. Sets & Frozensets</a></li>
+        <li><a href="#dictionaries">11. Dictionaries</a></li>
+        <li><a href="#conditionals">12. Conditionals & Match</a></li>
+        <li><a href="#loops">13. Loops & Search</a></li>
+        <li><a href="#functions">14. Functions & Recursion</a></li>
+        <li><a href="#oop-basics">15. OOP: Classes & Objects</a></li>
+        <li><a href="#oop-pillars">16. The Four Pillars</a></li>
+        <li><a href="#advanced-oop">17. Decorators & Dunder</a></li>
+    </ul>
+</nav>
+
+<main>
+    <h1>Exhaustive Python Study Guide</h1>
+
+    <section id="intro">
+        <h2>1. Getting Started & Setup</h2>
+        <p>Python is an <strong>interpreted</strong> language: you write <code>.py</code> files and run them using the Python interpreter. Execution starts from the top of the script.</p>
+        <pre><code># Check Installation
+# Windows: python --version  | Linux/Mac: python3 --version
+
+print("Hello, World!") # Your first program</code></pre>
+        <h3>Interactive Mode (REPL)</h3>
+        <p>Type <code>python</code> or <code>py</code> in your terminal to enter the shell (<code>>>></code>). Use <code>exit()</code> to quit.</p>
+    </section>
+
+    <section id="syntax">
+        <h2>2. Basic Syntax & Identifiers</h2>
+        <p>Python uses <strong>indentation</strong> (standard is 4 spaces) to define code blocks instead of <code>{}</code>.</p>
+        <pre><code>if True:
+    print("Correct Indentation")
+# print("Error") # Missing indentation → IndentationError</code></pre>
+        <h3>Rules for Identifiers</h3>
+        <ul>
+            <li>Can contain letters (a–z), digits (0–9), and <code>_</code>.</li>
+            <li>Cannot start with a digit (e.g., <code>2name</code> is invalid).</li>
+            <li>Cannot be a <strong>keyword</strong> (e.g., <code>if</code>, <code>while</code>, <code>class</code>).</li>
+            <li>Case-sensitive: <code>age</code>, <code>Age</code>, and <code>AGE</code> are different.</li>
+        </ul>
+    </section>
+
+    <section id="variables">
+        <h2>3. Variables, Naming & Scope</h2>
+        <p>Python uses dynamic typing; types are inferred at runtime.</p>
+        <pre><code># Multi-assignment & Unpacking
+x, y, z = 10, 20, 30
+fruits = ["apple", "banana"]
+a, b = fruits # Unpacking</code></pre>
+        <h3>Scope & <code>global</code></h3>
+        <pre><code>count = 0
+def increment():
+    global count # Refer to variable in global scope
+    count += 1</code></pre>
+    </section>
+
+    <section id="datatypes">
+        <h2>4. Data Types & Casting</h2>
+        <table>
+            <tr><th>Category</th><th>Types</th></tr>
+            <tr><td>Numeric</td><td>int, float (scientific: <code>12e4</code>), complex (<code>3+5j</code>)</td></tr>
+            <tr><td>Boolean</td><td>bool (True/False)</td></tr>
+            <tr><td>Sequence</td><td>list, tuple, range</td></tr>
+            <tr><td>Mapping</td><td>dict</td></tr>
+            <tr><td>Binary</td><td>bytes, bytearray, memoryview</td></tr>
+            <tr><td>Special</td><td>NoneType (None)</td></tr>
+        </table>
+        <h3>Casting Constructors</h3>
+        <p><code>int()</code>, <code>float()</code>, <code>str()</code>, <code>list()</code> are used to explicitly convert types.</p>
+    </section>
+
+    <section id="operators">
+        <h2>5. Operators & Precedence</h2>
+        <p><strong>Arithmetic:</strong> <code>+ - * / //</code> (floor) <code>%</code> (mod) <code>**</code> (power)</p>
+        <p><strong>Logical:</strong> <code>and</code>, <code>or</code>, <code>not</code></p>
+        <p><strong>Identity & Membership:</strong> <code>is</code>, <code>is not</code>, <code>in</code>, <code>not in</code></p>
+        <div class="note-box">
+            <strong>Precedence (High to Low):</strong> () → ** → * / // % → + - → Comparisons → not → and → or.
+        </div>
+    </section>
+
+    <section id="input-output">
+        <h2>6. Taking Input & Printing Sum</h2>
+        <pre><code>name = input("Enter name: ") # Always returns str
+age = int(input("Enter age: ")) # Explicit cast to int
+
+print("Sum =", 10 + 20) # print() adds spaces between comma arguments</code></pre>
+    </section>
+
+    <section id="strings">
+        <h2>7. Strings, Slicing & Methods</h2>
+        <p>Strings are <strong>immutable</strong> sequences of Unicode characters.</p>
+        <pre><code>s = "hello"
+print(s[1:4])  # 'ell' (slicing)
+print(s[::-1]) # 'olleh' (reverse)
+# s[0] = 'H'   # TypeError: strings are immutable</code></pre>
+        <h3>F-Strings & Methods</h3>
+        <pre><code>price = 50
+print(f"Cost: {price:.2f}") # F-string with formatting
+# Methods: .endswith(), .capitalize(), .replace(), .find(), .count()</code></pre>
+    </section>
+
+    <section id="lists">
+        <h2>8. Lists (Mutable Sequence)</h2>
+        <p>Ordered, indexable, and heterogeneous.</p>
+        <pre><code>nums = [1, 2, 3]
+nums.append(4)
+nums.insert(1, "two") # Heterogeneous allowed
+nums.pop()            # Remove & return last
+nums.sort()           # In-place sort (only if items are same type)</code></pre>
+        <h3>List Comprehension</h3>
+        <pre><code># [expression for item in iterable if condition]
+vowels = [x for x in "education" if x in "aeiou"]</code></pre>
+    </section>
+
+    <section id="tuples">
+        <h2>9. Tuples (Immutable Sequence)</h2>
+        <p>Ordered and unchangeable. Often used for faster data access or to protect data.</p>
+        <pre><code>t = (1, 2, 3)
+single = (5,) # Comma is mandatory for single-element tuple</code></pre>
+    </section>
+
+    <section id="sets">
+        <h2>10. Sets & Frozensets</h2>
+        <p>Unordered collection of unique, hashable elements.</p>
+        <pre><code>s = {1, 2, 2, 3} # Result: {1, 2, 3}
+s.add(4)
+s.discard(10)    # Safe remove (no error if not found)</code></pre>
+        <p><strong>Frozenset:</strong> Immutable version of a set. Useful as a dictionary key.</p>
+    </section>
+
+    <section id="dictionaries">
+        <h2>11. Dictionaries (Key:Value)</h2>
+        <p>Keys must be immutable (hashable). In Python 3.7+, insertion order is preserved.</p>
+        <pre><code>student = {"name": "Anu", "age": 21}
+print(student.get("phone")) # Returns None (Safe)
+# .keys(), .values(), .items()</code></pre>
+    </section>
+
+    <section id="conditionals">
+        <h2>12. Conditionals, Match & Truthiness</h2>
+        <p><strong>False values:</strong> <code>None, 0, 0.0, "", (), [], {}</code>.</p>
+        <pre><code># Shorthand (Ternary)
+max_val = a if a > b else b
+
+# Match Statement (3.10+)
+match status:
+    case 200 | 201: print("Success")
+    case _ if status >= 500: print("Server Error")
+    case _: print("Default")</code></pre>
+    </section>
+
+    <section id="loops">
+        <h2>13. Loops, Search & Control</h2>
+        <p><code>break</code> stops loop; <code>continue</code> skips iteration; <code>pass</code> is a placeholder.</p>
+        <pre><code>for i in range(1, 6): # 1 to 5
+    if i == 3: continue
+    print(i)
+
+# Linear Search
+for x in nums:
+    if x == target:
+        found = True
+        break</code></pre>
+    </section>
+
+    <section id="functions">
+        <h2>14. Functions & Recursion</h2>
+        <p>If no return is specified, a function returns <code>None</code>.</p>
+        
+        <pre><code>def factorial(n):
+    if n <= 1: return 1 # Base Case
+    return n * factorial(n - 1) # Recursive Case</code></pre>
+    </section>
+
+    <section id="oop-basics">
+        <h2>15. OOP: Classes & Objects</h2>
+        <p><code>__init__</code> is the constructor. <code>self</code> refers to the instance.</p>
+        <pre><code>class Car:
+    wheels = 4 # Class Attribute
+    def __init__(self, brand):
+        self.brand = brand # Instance Attribute</code></pre>
+    </section>
+
+    <!-- <section id="oop-pillars">
+        <h2>16. The Four Pillars of OOP</h2>
+        
+        <ul>
+            <li><strong>Abstraction:</strong> Hiding internal complexity.</li>
+            <li><strong>Encapsulation:</strong> Data hiding using <code>__private</code> (Name Mangling).</li>
+            <li><strong>Inheritance:</strong> Reusing parent code using <code>super()</code>.</li>
+            <li><strong>Polymorphism:</strong> Method overriding (same interface, different action).</li>
+        </ul>
+    </section> -->
+
+    <section id="oop-pillars">
+    <h2>16. The Four Pillars of OOP (Bank Example)</h2>
+    <p>A <strong>BankAccount</strong> system is the perfect way to visualize how the four pillars work together in a real-world application.</p>
+    
+    
+
+    <pre><code>from abc import ABC, abstractmethod
+
+class BankAccount(ABC):
+    def __init__(self, account_number, owner):
+        self.account_number = account_number
+        self.owner = owner
+        self.__balance = 0.0  # Private attribute (Encapsulation)
+
+    def get_balance(self):
+        return self.__balance
+
+    def deposit(self, amount):
+        if amount <= 0: raise ValueError("Must be positive")
+        self.__balance += amount
+
+    @abstractmethod
+    def withdraw(self, amount):
+        """Abstraction: Each account defines its own rules."""
+        pass
+
+    def _deduct(self, amount):
+        """Protected helper for subclasses."""
+        if amount > self.__balance: raise ValueError("Funds insufficient")
+        self.__balance -= amount
+
+class SavingsAccount(BankAccount): # Inheritance
+    def withdraw(self, amount):
+        # Polymorphism: No overdraft allowed
+        self._deduct(amount)
+
+class CurrentAccount(BankAccount): # Inheritance
+    def withdraw(self, amount):
+        # Polymorphism: Allow overdraft up to 5000
+        if (self.get_balance() - amount) < -5000:
+            raise ValueError("Overdraft limit exceeded")
+        self._deduct(amount)</code></pre>
+
+    <h3>1. Abstraction (The "What", not the "How")</h3>
+    <p><strong>Idea:</strong> Show only what the user needs; hide the internal complexity.</p>
+    <ul>
+        <li><strong>In the code:</strong> The caller just uses <code>acc.withdraw(200)</code>. They don't need to know the math behind overdraft limits or internal balance storage.</li>
+        <li><strong>Enforcement:</strong> Using <code>ABC</code> and <code>@abstractmethod</code> forces subclasses to implement specific logic while keeping the interface simple.</li>
+    </ul>
+
+    <h3>2. Encapsulation (Data Hiding)</h3>
+    <p><strong>Idea:</strong> Bundle data and methods; restrict direct access to data.</p>
+    <ul>
+        <li><strong>In the code:</strong> We use <code>self.__balance</code>. External code cannot do <code>acc.__balance = 1000000</code>.</li>
+        <li><strong>Control:</strong> Updates are only possible via <code>deposit()</code>, which ensures all data follows validation rules (e.g., no negative deposits).</li>
+    </ul>
+
+    <h3>3. Inheritance (Code Reuse)</h3>
+    <p><strong>Idea:</strong> Reuse and extend behavior from a base class to reduce duplication.</p>
+    <ul>
+        <li><strong>In the code:</strong> <code>SavingsAccount</code> and <code>CurrentAccount</code> inherit <code>account_number</code> and <code>deposit()</code> from <code>BankAccount</code>.</li>
+        <li><strong>Efficiency:</strong> Common logic is written once in the parent and shared across all child types.</li>
+    </ul>
+
+    <h3>4. Polymorphism (Many Forms)</h3>
+    <p><strong>Idea:</strong> Use the same method name to perform different actions based on the object type.</p>
+    <ul>
+        <li><strong>In the code:</strong> Both accounts have a <code>withdraw()</code> method. However, <code>SavingsAccount.withdraw()</code> blocks negative balances, while <code>CurrentAccount.withdraw()</code> allows them.</li>
+        <li><strong>Flexibility:</strong> A single function can process any account type without knowing its specific rules in advance.</li>
+    </ul>
+</section>
+
+    <section id="advanced-oop">
+        <h2>17. Decorators, Methods & Dunder</h2>
+        <pre><code># Methods: @classmethod (cls), @staticmethod (none)
+# Dunder: __str__ (string rep), __add__ (operator overloading)
+
+class Point:
+    def __add__(self, other):
+        return Point(self.x + other.x, self.y + other.y)</code></pre>
+        <p><strong>Decorators:</strong> Functions that wrap and extend the behavior of another function.</p>
+    </section>
+
+    <hr>
+    <footer style="text-align: center; color: #777; margin-bottom: 40px;">
+        Student Study Guide &copy; 2026 | Comprehensive Python Documentation
+    </footer>
+</main>
+
+<script>
+    document.querySelectorAll('nav a').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+            e.preventDefault();
+            const targetId = this.getAttribute('href').substring(1);
+            const targetElement = document.getElementById(targetId);
+            if (targetElement) {
+                targetElement.scrollIntoView({ behavior: 'smooth' });
+            }
+        });
+    });
+</script>
+
+</body>
+</html>

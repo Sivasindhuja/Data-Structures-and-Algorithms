@@ -16,6 +16,7 @@ function exchange() {
 
     let secretAlice = powerMod(B, a, p);
     let secretBob = powerMod(A, b, p);
+    
 
     document.getElementById("result").innerHTML =
         `Alice Public Key: ${A}<br>
